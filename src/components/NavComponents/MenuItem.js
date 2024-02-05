@@ -2,14 +2,11 @@ import React from 'react';
 
 function MenuItem(props) {
   return (
-    <ul>
-        <li>
+        <li className='navbarItem'>
             <a href={props.href}>
                   {props.item.replace('_',' ')}
             </a>
         </li>
-  
-    </ul>
   )
 }
 

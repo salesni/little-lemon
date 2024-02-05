@@ -1,0 +1,38 @@
+nav{
+    font-size: 1.3rem;
+    padding: 1.2rem 20%;
+    display: flex;
+}
+#navBarLogo{
+
+    margin-left: 0.2rem;
+    width: 20%;
+    height: auto;
+}
+
+#buttonsList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbarItem{
+    padding: 1rem;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.navbarItem a{
+    text-decoration: none;
+    color: rgb(73,94,87);
+}
+
+.navbarItem a:hover {
+    color: rgb(244,206,20);
+}
+
+
+
+
+

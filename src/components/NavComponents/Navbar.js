@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../../commons/Logo.svg';
 import MenuItem from './MenuItem';
+import './Navbar.css';
+
 
 const menuObj ={
   Home: '#',
@@ -17,9 +19,9 @@ const mapUl = Object.keys(menuObj).map((item)=>{
 function Navbar() {
   return (
     <nav>
-      <img src={Logo} alt='little-lemmon logo'></img>
+      <img id='navBarLogo' src={Logo} alt='little-lemon logo'></img>
       <div>
-        <ul>
+        <ul id='buttonsList'>
           {mapUl}
         </ul>
       </div>
