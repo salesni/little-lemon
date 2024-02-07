@@ -1,0 +1,16 @@
+.little-lemon-button{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(244, 206, 20) ;
+    color: black;
+    border: none;
+    padding: 1rem;
+    border-radius: 16px;
+    height: 50px;
+}
+
+.little-lemon-button:active{
+    color: wheat;
+    background-color: black;
+    border: none;
+}

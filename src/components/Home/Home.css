@@ -1,3 +1,9 @@
+/*
+-------------------
+Hero Section
+-------------------
+*/
+
 #hero{
     display: flex;
     flex-wrap: wrap;
@@ -38,4 +44,49 @@
     height: 427px;
     object-fit: cover;
     border-radius: 10%;
+}
+
+/*
+-------------------
+Highlights Section
+-------------------
+*/
+
+#Highlights{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 2rem 20%;
+}
+
+#highlightHeaders{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#highlightHeaders h1{
+    font-size: 2rem;
+    color:rgb(73, 94, 87);
+}
+
+#highlightHeaders button{
+    display: inline;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+#highlightCardsBox{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3,270px);
+    grid-gap: 50px;
+    
 }

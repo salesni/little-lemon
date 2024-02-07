@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
-import Button from '../commons/Button';
-import RestaurantFood from '../../commons/restauranfood.jpg';
+import Button from '../commons/Button/Button';
+import RestaurantFood from '../../commons/img/restauranfood.jpg';
 
 function Hero() {
   return (
