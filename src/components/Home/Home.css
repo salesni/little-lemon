@@ -90,3 +90,40 @@ Highlights Section
     grid-gap: 50px;
     
 }
+
+/*
+-------------------
+Testimonials  Section
+-------------------
+*/
+
+#Testimonials{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 2rem 20%;
+    background-color: rgb(238, 153, 114);
+    
+}
+
+#testimonialHeader{
+    text-align: center;
+}
+
+#testimonialHeader h1{
+    font-size: 2rem;
+    color:rgb(73, 94, 87);
+}
+
+
+#ratingCardsBox{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4,200px);
+    grid-auto-rows: minmax(250px,auto);
+    grid-gap: 50px;
+    
+}

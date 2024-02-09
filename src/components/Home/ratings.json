@@ -1,0 +1,28 @@
+{
+    "ratings":[
+        {
+            "usernamePhoto":"matthew-smith-ghZg2gncq5w-unsplash.jpg",
+            "name":"Amy Dooley",
+            "ratingNum":4,
+            "description": "Praesent at efficitur libero. Donec nec sodales mauris. Proin at blandit arcu. In laoreet vehicula enim, id mollis nulla condimentum eu. "
+        },
+        {
+            "usernamePhoto":"ian-dooley-d1UPkiFd04A-unsplash.jpg",
+            "name":"Ian Smith",
+            "ratingNum":3,
+            "description": " Proin at blandit arcu. In laoreet vehicula enim, id mollis nulla condimentum eu."
+        },
+        {
+            "usernamePhoto":"slav-romanov-BrEAp01_m5w-unsplash.jpg",
+            "name":"Maria Stewart",
+            "ratingNum":5,
+            "description": " Proin at blandit arcu. In laoreet vehicula enim, Praesent at efficitur libero. Donec nec sodales mauris.Id mollis nulla condimentum eu. "
+        },
+        {
+            "usernamePhoto":"philip-martin-5aGUyCW_PJw-unsplash.jpg",
+            "name":"Philip Martin",
+            "ratingNum":1,
+            "description": "Praesent at efficitur libero. Donec nec sodales mauris"
+        }
+    ]
+}
