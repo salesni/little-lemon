@@ -6,7 +6,7 @@ import lemon from '../../../commons/icons/lemon.svg';
 
 function RatingCard(props) {
   const lemonList =  [...Array(props.rating.ratingNum).keys()].map((index)=>{
-    return <img src={lemon} alt="Lemon Star Rating"></img>
+    return <img src={lemon} key={`lemon_${index}_${props.rating.name}`} alt="Lemon Star Rating"></img>
   });
   return (
     <div className='ratingCard'>

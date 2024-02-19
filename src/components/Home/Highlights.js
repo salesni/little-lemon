@@ -11,7 +11,7 @@ import dishesJSON from './highlightDishes.json';
 
 
 const foodCardList = dishesJSON.highlightDishes.map((dish)=>{
-    return <FoodCard dish={dish} 
+    return <FoodCard dish={dish} key={`Highlight_${dish.dishName}`}
             src={require(`../../commons/img/${dish.src}`)}/>
 });
 

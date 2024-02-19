@@ -2,19 +2,25 @@ nav{
     font-size: 1.3rem;
     padding: 1.2rem 20%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    
 }
 #navBarLogo{
 
-    margin-left: 0.2rem;
+    margin-left: 20px;
     width: 20%;
     height: auto;
+    cursor: pointer;
 }
 
-#buttonsList{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+.navButtonsList{
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
 }
 
 .navbarItem{
@@ -32,7 +38,77 @@ nav{
     color: rgb(244,206,20);
 }
 
+.menuIcon{
+    display: none;
+    color: rgb(73,94,87);
+}
 
+@media screen and (max-width: 960px) {
+    
 
+    .navButtonsList{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top:100px;
+        left:0;
+        z-index: -1;
+        opacity: 0;
+        transition:  all 0.5s ease;
+    }
 
+    .navButtonsList.active{
+        background: rgb(255,255,255); 
+        z-index: 1;
+        opacity: 1;
+        transition:  all 0.5s ease;
+        
+    }
+
+    .navbarItem a{
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+        color:rgb(73,94,87);
+    }
+
+    .navbarItem a:hover {
+        color: rgb(244,206,20);
+    }
+    
+    #navBarLogo{
+
+        margin-left: 20px;
+        width: 160px;
+        height: auto;
+        cursor: pointer;
+    }
+    
+
+    .menuIcon{
+        display:block;
+        padding-top: 35px;
+        margin-left: 40%;
+        font-size: 1.8rem;
+    }
+
+    
+}
+
+@media screen and (max-width: 400px) {
+    #navBarLogo{
+        width: 100px;
+        height: auto;
+    }
+    
+
+    .menuIcon{
+        padding-top: 35px;
+        margin-left: 30%;
+    }
+
+}
 
