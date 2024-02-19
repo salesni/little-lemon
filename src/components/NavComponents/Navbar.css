@@ -69,7 +69,7 @@ nav{
 
     .navbarItem a{
         text-align: center;
-        padding: 2rem;
+        padding: 2rem 0;
         width: 100%;
         display: table;
         color:rgb(73,94,87);

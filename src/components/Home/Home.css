@@ -166,7 +166,7 @@ About Section
 
 #aboutImage{
     border-radius: 15%;
-    padding: 2rem 1rem;
+    padding: 2rem 0 2rem 1rem;
     width: 442px;
     height: 442px;
    
@@ -177,7 +177,20 @@ About Section
 RESPONSIVE 
 -------------------
 */
+@media screen and (max-width: 1200px) {
+    /*
+    -------------------
+    About Section 
+    -------------------
+    */
 
+    #about{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;   
+        padding: 0 10%;
+    }
+}
 @media screen and (max-width: 960px) {
     /*
     -------------------
@@ -201,9 +214,84 @@ RESPONSIVE
         border-radius: 20%;
         padding: 2rem 0;
     }
-    
+
+    /*
+    -------------------
+    Highlights Section
+    -------------------
+    */
+
+    #highlightCardsBox{
+        grid-template-columns: repeat(4,auto);
+        grid-gap: 40px;
+    }
+    /*
+    -------------------
+    Ratings Section
+    -------------------
+    */
+    #ratingCardsBox{
+        grid-template-columns: repeat(3,200px);
+    }
+
+    /*
+    -------------------
+    About Section 
+    -------------------
+    */
+    #aboutImage{
+        width: 300px;
+        height: 300px;
+        margin-top: 20%;
+    }
 }
 
+@media screen and (max-width: 700px) {
+    /*
+    -------------------
+    Highlights Section
+    -------------------
+    */
+
+    #highlightCardsBox{
+        display: flex;
+        flex-direction: column;
+        padding: 0 15%;
+    }
+        /*
+    -------------------
+    Ratings Section
+    -------------------
+    */
+    #ratingCardsBox{
+        grid-template-columns: repeat(2,200px);
+    }
+
+    /*
+    -------------------
+    About Section 
+    -------------------
+    */
+    #about{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        
+    }
+    #about p{
+        padding-right: 0;
+    }
+    
+    #aboutImage{
+        display: block;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+
+}
 
 @media screen and (max-width: 576px) {
     /*
@@ -230,5 +318,42 @@ RESPONSIVE
         border-radius: 20%;
         padding: 2rem 0;
     }
+        /*
+    -------------------
+    Highlights Section
+    -------------------
+    */
+
+    #highlightCardsBox{
+        display: flex;
+        flex-direction: column;
+        padding: 0 5%;
+    }
     
+}
+
+@media screen and (max-width: 480px) {
+    /*
+    -------------------
+    Testimonials Section
+    -------------------
+    */
+
+    #ratingCardsBox{
+        display: flex;
+        flex-direction: column;
+        padding: 0 5%;
+    }
+
+    /*
+    -------------------
+    About Section
+    -------------------
+    */
+
+    #aboutImage{
+        width: 200px;
+        height: 200px;
+    }
+        
 }

@@ -14,7 +14,7 @@ function Testimonials() {
     <article id='Testimonials'>
         <div id='testimonialHeader'>
             <h1>
-                This Week Specials!
+                Testimonials
             </h1>
         </div>
         <div id='ratingCardsBox'>

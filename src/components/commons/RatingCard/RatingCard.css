@@ -7,6 +7,8 @@
     padding:  1rem ;
 }
 
+
+
 .ratingStars{
     display: flex;
     flex-direction: row;
@@ -55,4 +57,14 @@
 .ratingDescription {
     font-size: 0.75rem;
     color: rgb(51, 51, 51);
+}
+
+@media screen and (max-width: 960px) {
+    .ratingCard{
+        grid-column-end: span 1;
+    }
+
+    .ratingCard:last-child:nth-child(even){
+        grid-column-start: 2;
+    }
 }

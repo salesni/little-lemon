@@ -1,8 +1,9 @@
 .foodCard{
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 265px;
+    width: auto;
     background-color: rgb(237, 239, 238) ;
     border-radius: 16px;
 }
@@ -45,4 +46,25 @@
     font-weight: bold;
     color: rgb(51, 51, 51);
     padding: 0 1rem 1rem 1rem;
+}
+
+@media screen and (max-width: 960px) {
+    .foodCard img{
+        height: 120px;
+        width: 100%;
+    }
+    .foodCard{
+        grid-column-end: span 2;
+    }
+    .foodCard:last-child:nth-child(odd){
+        grid-column-start: 2;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .foodCard img{
+        height: 150px;
+        width: 100%;
+    }
+
 }

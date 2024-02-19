@@ -22,6 +22,7 @@ footer{
     height: 250px; 
     object-fit: cover; 
     object-position:  -5% 0;
+    cursor: pointer;
 }
 
 .FooterSections{
@@ -62,5 +63,33 @@ footer{
 }
 
 
+/*
+-------------------
+RESPONSIVE 
+-------------------
+*/
+@media screen and (max-width: 1250px) {
+    #footerContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .FooterSections{
+        justify-content: center;
+    }
+}
 
+@media screen and (max-width: 960px) {
+    #footerLogo img{
+        width: 150px; 
+        height: 188px; 
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #footerLogo img{
+        width: 120px; 
+        height: 150px; 
+    }
+}
 
