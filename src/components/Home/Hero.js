@@ -17,7 +17,7 @@ function Hero() {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </h3>
-            <Button title = 'Reserve a Table' />
+            <Button title = 'Reserve a Table' href='/Reservation' />
         </div>
         <img id='heroImage' alt='Restaurant Food' src={RestaurantFood}></img>
 

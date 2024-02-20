@@ -8,10 +8,10 @@ import './Navbar.css';
 
 
 const menuObj ={
-  Home: '#',
- About: '#', 
- Menu: '#', 
- Reservations:'#',
+  Home: '/',
+ About: '/About', 
+ Menu: '/Menu', 
+ Reservations:'/Reservation',
  //Order_Online: '#',
  //Login: '#'
 };

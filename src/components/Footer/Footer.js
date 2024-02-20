@@ -3,12 +3,12 @@ import lemon from '../../commons/Logo.svg';
 import './Footer.css';
 
 const navMenuObj ={
-  Home: '#',
- About: '#', 
- Menu: '#', 
- Reservations:'#',
- Order_Online: '#',
- Login: '#'
+  Home: '/',
+ About: '/About', 
+ Menu: '/Menu', 
+ Reservations:'/Reservation',
+//  Order_Online: '#',
+//  Login: '#'
 };
 const mapUl = Object.keys(navMenuObj).map((item)=>{
   return  (

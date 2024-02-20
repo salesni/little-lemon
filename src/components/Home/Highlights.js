@@ -22,7 +22,7 @@ function Highlights() {
             <h1>
                 This Week Specials!
             </h1>
-            <Button title='Online Menu'/>
+            <Button title='Online Menu' href='/Menu'/>
 
         </div>
         <section id='highlightCardsBox'>
