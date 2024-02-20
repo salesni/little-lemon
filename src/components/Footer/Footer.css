@@ -1,0 +1,95 @@
+footer{
+    background-color: rgb(30,30,30);
+    align-content: center;
+    justify-content: center;
+    padding: 2rem 20%;
+}
+
+#footerContainer{
+    display: grid;
+    grid-template-columns: repeat(4,250px);
+    grid-gap: 20px;
+}
+
+
+#footerLogo{
+    padding: 1rem;
+}
+
+#footerLogo img{
+
+    width: 200px; 
+    height: 250px; 
+    object-fit: cover; 
+    object-position:  -5% 0;
+    cursor: pointer;
+}
+
+.FooterSections{
+    padding: 1.rem;
+}
+
+.FooterSections h3{
+    color:  rgb(244, 206, 20);
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.FooterSections ul{
+    padding-inline-start: 0;
+    margin-top: 0;
+}
+
+.footerListItem {
+    list-style-type: none;
+}
+
+.footerListItem a{
+    text-decoration: none;
+    color: rgb(251,218,187); 
+}
+
+.footerListItem a:hover{
+    color: rgb(238,153,114); 
+}
+
+.footerListItem #Facebook:hover{
+    color: rgb(24,119,242); 
+}
+
+
+.footerListItem #instagram:hover{
+    color: rgb(193,53,132); 
+}
+
+
+/*
+-------------------
+RESPONSIVE 
+-------------------
+*/
+@media screen and (max-width: 1250px) {
+    #footerContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .FooterSections{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    #footerLogo img{
+        width: 150px; 
+        height: 188px; 
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #footerLogo img{
+        width: 120px; 
+        height: 150px; 
+    }
+}
+
