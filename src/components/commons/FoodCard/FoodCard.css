@@ -103,6 +103,22 @@ input[class="dishInput"] {
     outline: 0;
 }
 
+.addCartBtn{
+    color: rgb(237, 239, 238);
+    background-color: rgb(73, 94, 87);
+    height: 2rem;
+    border-radius: .5rem;
+    border: none;
+    padding: 0 1rem;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+.addCartBtn:active{
+    background-color: rgb(41, 122, 95);
+}
 
 @media screen and (max-width: 960px) {
     .foodCard img{

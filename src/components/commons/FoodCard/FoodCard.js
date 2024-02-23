@@ -19,13 +19,18 @@ function FoodCard(props) {
         <p className='dishDescription'>{props.dish.description}</p>
         {
           props.href === undefined? 
-            <div className='incrementContainer'>
-              <button className='increment_decrement_button'
-              onClick={()=>increaseDecreaseInput(-1)}>-</button>
-              <input className='dishInput' type="number" value={numberOfDishes} />
-              <button className='increment_decrement_button' 
-                onClick={()=>increaseDecreaseInput(1)}>+</button>
-            </div>
+            <>
+              <div className='incrementContainer'>
+                <button className='increment_decrement_button'
+                onClick={()=>increaseDecreaseInput(-1)}>-</button>
+                <input className='dishInput' type="number" value={numberOfDishes} />
+                <button className='increment_decrement_button' 
+                  onClick={()=>increaseDecreaseInput(1)}>+</button>
+              </div>
+                <button className='addCartBtn'>
+                  Add to Cart
+                  </button>
+            </>
           :
             <a className='orderForDelivery' href={props.href}>
             Order a delivery {'  '}
