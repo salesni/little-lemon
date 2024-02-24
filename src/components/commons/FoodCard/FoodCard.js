@@ -1,22 +1,37 @@
 import React from 'react';
 import './FoodCard.css';
-
+import Dish from '../../../Model/Dish';
+import CartItem from '../../../Model/CartItem';
+import { useMenuContext } from '../../../context/MenuProvider';
 
 function FoodCard(props) {
+  const {menuState, setMenuState} = useMenuContext();
+  const dish = new Dish(props.src, props.dish.id, props.dish.dishName,
+                        props.dish.price, props.dish.description);
   const [numberOfDishes, setNumberOfDishes] = React.useState(0);
   const increaseDecreaseInput = (input) =>{
     let newNumberOfDishes = numberOfDishes + input;
     newNumberOfDishes < 0 ? setNumberOfDishes(0):setNumberOfDishes(newNumberOfDishes);
   }
 
+  const callCartContext = (dish)=>{
+    setMenuState(
+      {
+        type:'addItem',
+        cartItem: new CartItem(numberOfDishes,dish)
+      }
+    );
+  }
+
+
   return (
     <div className='foodCard'>
-        <img  src={props.src} alt={props.dish.alt}></img>
+        <img  src={dish.src} alt={dish.alt}></img>
         <div className='dishName'>
-            <h4>{props.dish.dishName}</h4>
-            <p className='dishPrice'>{props.dish.price}</p>
+            <h4>{dish.name}</h4>
+            <p className='dishPrice'>{`$ ${dish.getPrice()}`}</p>
         </div>
-        <p className='dishDescription'>{props.dish.description}</p>
+        <p className='dishDescription'>{dish.description}</p>
         {
           props.href === undefined? 
             <>
@@ -27,9 +42,10 @@ function FoodCard(props) {
                 <button className='increment_decrement_button' 
                   onClick={()=>increaseDecreaseInput(1)}>+</button>
               </div>
-                <button className='addCartBtn'>
+                <button className='addCartBtn'
+                 onClick={()=>callCartContext(dish)}>
                   Add to Cart
-                  </button>
+                </button>
             </>
           :
             <a className='orderForDelivery' href={props.href}>
