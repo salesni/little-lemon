@@ -52,7 +52,10 @@
     font-weight: bold;
   }
 
-
+.closeCart{
+    font-size: 3rem;
+    color:rgb(73, 94, 87);
+}
 
  hr{
     display: block;

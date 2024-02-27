@@ -7,6 +7,8 @@ const MenuContext = React.createContext('');
 const addItem2Cart = (state,cartItem) =>{
     if(!state.cartItemMap.has(cartItem.dish.id)){
         state.cartItemMap.set(cartItem.dish.id, new CartItem(cartItem.amount, cartItem.dish))
+    }else{
+        state.cartItemMap.get(cartItem.dish.id).amount += cartItem.amount;
     }
     state.cartTotalItems += cartItem.amount;
     state.cartTotalMoney += cartItem.amount * cartItem.dish.price;
@@ -16,12 +18,12 @@ const deleteItem2Cart = (state,cartItem) =>{
     const dishID = cartItem.dish.id;
     const newAmount = cartItem.amount;
     if(state.cartItemMap.has(cartItem.dish.id)){
-        state.cartTotalItems -= state.cartItemMap.get(dishID).amount - newAmount;
-        state.cartTotalMoney -= (state.cartItemMap.get(dishID).amount - newAmount) * cartItem.dish.price;
-        if(newAmount === 0){
+        state.cartTotalItems +=  newAmount;
+        state.cartTotalMoney +=  newAmount * cartItem.dish.price;
+        if((state.cartItemMap.get(dishID).amount + newAmount) <= 0){
             state.cartItemMap.delete(dishID);
         }else{
-            state.cartItemMap.get(dishID).amount -= newAmount;
+            state.cartItemMap.get(dishID).amount += newAmount;
         }
     }
 }

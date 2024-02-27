@@ -3,24 +3,39 @@ import './FoodCard.css';
 import Dish from '../../../Model/Dish';
 import CartItem from '../../../Model/CartItem';
 import { useMenuContext } from '../../../context/MenuProvider';
+import { type } from '@testing-library/user-event/dist/type';
 
 function FoodCard(props) {
   const {menuState, setMenuState} = useMenuContext();
   const dish = new Dish(props.src, props.dish.id, props.dish.dishName,
                         props.dish.price, props.dish.description);
   const [numberOfDishes, setNumberOfDishes] = React.useState(0);
+
+  const valueChange = (event) =>{
+    let num = event.target.value;
+    if (num === '') {
+      setNumberOfDishes('');
+    } else {
+      num = parseInt(num.replace(/^0+/, ''));
+      setNumberOfDishes(num);
+    }
+  }
+
   const increaseDecreaseInput = (input) =>{
-    let newNumberOfDishes = numberOfDishes + input;
+    const newNumberOfDishes  = isNaN(numberOfDishes)? input : parseInt(numberOfDishes) + input;
     newNumberOfDishes < 0 ? setNumberOfDishes(0):setNumberOfDishes(newNumberOfDishes);
   }
 
   const callCartContext = (dish)=>{
-    setMenuState(
-      {
-        type:'addItem',
-        cartItem: new CartItem(numberOfDishes,dish)
-      }
-    );
+    if (numberOfDishes > 0 ){
+      setMenuState(
+        {
+          type:'addItem',
+          cartItem: new CartItem(numberOfDishes,dish)
+        }
+      );
+    }
+    setNumberOfDishes(0);
   }
 
 
@@ -38,7 +53,10 @@ function FoodCard(props) {
               <div className='incrementContainer'>
                 <button className='increment_decrement_button'
                 onClick={()=>increaseDecreaseInput(-1)}>-</button>
-                <input className='dishInput' type="number" value={numberOfDishes} />
+                <input className='dishInput' type="number"
+                 value={(numberOfDishes === '' ) ? 0 : parseInt(numberOfDishes)}
+                 onChange={valueChange}
+                 />
                 <button className='increment_decrement_button' 
                   onClick={()=>increaseDecreaseInput(1)}>+</button>
               </div>
