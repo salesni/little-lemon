@@ -10,6 +10,22 @@ function CartItemView(props) {
     const dish = new Dish(props.dish.src, props.dish.id, props.dish.dishName,
         props.dish.price, props.dish.description);
 
+    const valueChange = (event) =>{
+        let num = event.target.value;
+        const action = 'setItem';
+        let amount = parseInt(num.replace(/^0+/, ''));
+        amount = isNaN(amount) ? 0:amount;
+        setMenuState(
+            {
+                type:action,
+                dishID: dish.id,
+                amount:amount
+              }
+        );
+        
+    }
+        
+
     const increaseDecreaseInput = (addition) =>{
         let action = '';
         addition > 0 ? action = 'addItem': action ='deleteItem';
@@ -35,7 +51,8 @@ function CartItemView(props) {
                             -
                 </button>
                 <input className='cartDishInput' type="number" 
-                value={menuState.cartItemMap.get(dish.id).amount} />
+                value={menuState.cartItemMap.get(dish.id).amount} 
+                onChange={valueChange}/>
                 <button className='increment_decrement_button' 
                         onClick={()=>increaseDecreaseInput(1)}>
                             +

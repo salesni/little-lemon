@@ -7,7 +7,7 @@ function CartList() {
 
   const myCartList = Array.from(menuState.cartItemMap.entries()).map((entry) => {
     const [id, cartItem] = entry;
-    return(<CartItemView dish={cartItem.dish}/>)
+    return(<CartItemView dish={cartItem.dish} key={`cartItem_${cartItem.dish.id}`}/>)
   })
 
   return (

@@ -12,8 +12,8 @@ const navMenuObj ={
 };
 const mapUl = Object.keys(navMenuObj).map((item)=>{
   return  (
-      <li className='footerListItem'>
-          <a href={navMenuObj[item]} key={`Footer_${item}`}>
+      <li className='footerListItem'  key={`Footer_${item}`}>
+          <a href={navMenuObj[item]}>
                 {item.replace('_',' ') }
           </a>
       </li>
