@@ -60,7 +60,8 @@ const cart = (state,action) => {
     let tempState = {
         cartTotalItems:state.cartTotalItems,
         cartTotalMoney: state.cartTotalMoney,
-        cartItemMap: state.cartItemMap
+        cartItemMap: state.cartItemMap,
+        orderFullFilled:state.orderFullFilled
     }
 
     let operation = action.type;
@@ -77,6 +78,20 @@ const cart = (state,action) => {
         case 'setItem':
             setItem2Cart(tempState,action.dishID, action.amount);
             break;
+
+        case 'fullFillOrder':
+            tempState.orderFullFilled = true;
+            break;
+
+        case 'reset':
+            tempState = {
+                cartTotalItems:0,
+                cartTotalMoney:0.00,
+                cartItemMap: new Map(),
+                orderFullFilled:false
+            };
+            break;
+    
         default:
             return tempState;
     }
@@ -92,7 +107,8 @@ const MenuProvider = ({children}) => {
     const initialState = {
         cartTotalItems:0,
         cartTotalMoney:0.00,
-        cartItemMap: new Map()
+        cartItemMap: new Map(),
+        orderFullFilled:false
     };
     //dish structure
     /*

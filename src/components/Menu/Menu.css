@@ -75,6 +75,132 @@
     align-items: start;
 }
 
+/* CartList */
+#cartList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* CartItemView */
+  .cartItem {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(237, 239, 238) ;
+  }
+  
+  .cartItem img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+  
+  .cartItem div {
+    flex-grow: 1;
+    
+  }
+  
+  .cartItem h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color:rgb(73, 94, 87);
+  }
+  
+  .cartItem p {
+    margin: 5px 0;
+    color:rgb(51, 51, 51);
+    padding-right: 0.2REM;
+  }
+
+  .cartItem p~p {
+    color:rgb(238, 153, 114);
+    font-weight: bold;
+  }
+  
+  .cartItemInputContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cartDishInput {
+    width: 50px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  .cartItemButtons {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .increment_decrement_cart {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .increment_decrement_cart:hover {
+    background-color: #ddd;
+  }
+
+  #cartList hr{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+  }
+
+  #cartList h1{
+    text-align: right;
+    font-weight: normal;
+  }
+
+
+
+  #cartList div {
+    margin-bottom: 10px;
+  }
+  
+  #cartList label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #cartList input[type="text"],
+  #cartList input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  #cartList hr {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  #cartList h1 {
+    text-align: right;
+  }
+  .checkoutButtonDiv{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  #cartList Button {
+    margin-top: 10px;
+    align-self: right;
+  }
+
+
 @media screen and (max-width: 960px) {
 
     #menuCardsBox{

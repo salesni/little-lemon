@@ -3,7 +3,6 @@ import './FoodCard.css';
 import Dish from '../../../Model/Dish';
 import CartItem from '../../../Model/CartItem';
 import { useMenuContext } from '../../../context/MenuProvider';
-import { type } from '@testing-library/user-event/dist/type';
 
 function FoodCard(props) {
   const {menuState, setMenuState} = useMenuContext();

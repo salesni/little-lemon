@@ -47,7 +47,6 @@ function Menu() {
               <MenuCardBox/> :
               <CartList/>
             }
-
           </article>
         </main>
         <Footer/>

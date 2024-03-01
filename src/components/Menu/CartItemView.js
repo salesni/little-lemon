@@ -3,14 +3,17 @@ import { useMenuContext } from '../../context/MenuProvider';
 
 import Dish from '../../Model/Dish';
 import CartItem from '../../Model/CartItem';
+import { faTrash, faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 function CartItemView(props) {
     const {menuState, setMenuState} = useMenuContext();
-    const dish = new Dish(props.dish.src, props.dish.id, props.dish.dishName,
+    const dish = new Dish(props.dish.src, props.dish.id, props.dish.name,
         props.dish.price, props.dish.description);
 
     const valueChange = (event) =>{
+        console.log(props.dish)
         let num = event.target.value;
         const action = 'setItem';
         let amount = parseInt(num.replace(/^0+/, ''));
@@ -43,20 +46,23 @@ function CartItemView(props) {
             <div>
                 <h3>{dish.name}</h3>
                 <p>{dish.description}</p>
-                <p>{dish.price}</p>
+                <p>{`$ ${dish.getPrice()}`}</p>
             </div>
-            <div>
-                <button className='increment_decrement_button'
-                        onClick={()=>increaseDecreaseInput(-1)}>
-                            -
-                </button>
-                <input className='cartDishInput' type="number" 
-                value={menuState.cartItemMap.get(dish.id).amount} 
-                onChange={valueChange}/>
-                <button className='increment_decrement_button' 
-                        onClick={()=>increaseDecreaseInput(1)}>
-                            +
-                </button>
+            <div className="cartItemInputContainer">
+                <input className='cartDishInput' type="number"
+                    value={menuState.cartItemMap.get(dish.id).amount}
+                    onChange={valueChange} />
+                <div className="cartItemButtons">
+                    <button className='increment_decrement_cart'
+                        onClick={() => increaseDecreaseInput(1)}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                    <button className='increment_decrement_cart'
+                        onClick={() => increaseDecreaseInput(-1)}>
+                        <FontAwesomeIcon 
+                        icon={menuState.cartItemMap.get(dish.id).amount === 1?faTrash:faMinus } />
+                    </button>
+                </div>
             </div>
         </div>
     )
