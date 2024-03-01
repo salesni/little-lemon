@@ -8,7 +8,8 @@ function Button(props) {
     <>
       {
          props.href === undefined?
-          <button className='little-lemon-button' href={props.href} >
+          <button className='little-lemon-button' href={props.href}
+              onClick={props.func} >
             {
               props.title
             }
