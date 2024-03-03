@@ -1,6 +1,7 @@
 import React from 'react';
 import lemon from '../../commons/Logo.svg';
 import './Footer.css';
+import {NavLink } from 'react-router-dom';
 
 const navMenuObj ={
   Home: '/',
@@ -13,9 +14,9 @@ const navMenuObj ={
 const mapUl = Object.keys(navMenuObj).map((item)=>{
   return  (
       <li className='footerListItem'  key={`Footer_${item}`}>
-          <a href={navMenuObj[item]}>
-                {item.replace('_',' ') }
-          </a>
+          <NavLink   to={navMenuObj[item]}>
+              {item.replace('_',' ') }
+          </NavLink >
       </li>
   );
 });
