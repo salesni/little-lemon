@@ -52,6 +52,10 @@ const deleteItemFromCart  = (state,cartItem) =>{
         } else {
             existingCartItem.amount = newAmount;
         }
+
+        if (state.cartTotalItems === 0){
+            state.page = 'Menu';
+        }
     }
 }
 
@@ -61,7 +65,8 @@ const cart = (state,action) => {
         cartTotalItems:state.cartTotalItems,
         cartTotalMoney: state.cartTotalMoney,
         cartItemMap: state.cartItemMap,
-        orderFullFilled:state.orderFullFilled
+        orderFullFilled:state.orderFullFilled,
+        page:state.page
     }
 
     let operation = action.type;
@@ -82,13 +87,18 @@ const cart = (state,action) => {
         case 'fullFillOrder':
             tempState.orderFullFilled = true;
             break;
+        
+        case 'togglePage':
+            tempState.page = tempState.page === 'Menu'? 'Cart':'Menu';
+            break;
 
         case 'reset':
             tempState = {
                 cartTotalItems:0,
                 cartTotalMoney:0.00,
                 cartItemMap: new Map(),
-                orderFullFilled:false
+                orderFullFilled:false,
+                page:'Menu'
             };
             break;
     
@@ -108,7 +118,8 @@ const MenuProvider = ({children}) => {
         cartTotalItems:0,
         cartTotalMoney:0.00,
         cartItemMap: new Map(),
-        orderFullFilled:false
+        orderFullFilled:false,
+        page:'Menu'
     };
     //dish structure
     /*

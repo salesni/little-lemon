@@ -52,7 +52,9 @@ function CartItemView(props) {
                 <input className='cartDishInput' type="number"
                     value={menuState.cartItemMap.get(dish.id).amount}
                     onChange={valueChange} />
-                <div className="cartItemButtons">
+                {
+                    menuState.orderFullFilled?  <></>:
+                    <div className="cartItemButtons">
                     <button className='increment_decrement_cart'
                         onClick={() => increaseDecreaseInput(1)}>
                         <FontAwesomeIcon icon={faPlus} />
@@ -63,6 +65,7 @@ function CartItemView(props) {
                         icon={menuState.cartItemMap.get(dish.id).amount === 1?faTrash:faMinus } />
                     </button>
                 </div>
+                }
             </div>
         </div>
     )

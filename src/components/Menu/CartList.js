@@ -24,11 +24,14 @@ function CartList() {
   const { menuState, setMenuState } = useMenuContext();
 
   const fullFillOrder = () => {
-    console.log(email)
-    if (isValidEmailState && email !== '' && name !== '') {
-      setMenuState({ type: 'fullFillOrder' });
-    } else {
-      alert('To checkout, enter a valid Email Address and Name');
+    if(!menuState.orderFullFilled){
+      if (isValidEmailState && email !== '' && name !== '') {
+        setMenuState({ type: 'fullFillOrder' });
+      } else {
+        alert('To checkout, enter a valid Email Address and Name');
+      }
+    }else{
+      setMenuState({ type: 'reset' });
     }
   }
 
@@ -46,33 +49,34 @@ function CartList() {
           {`Subtotal(${menuState.cartTotalItems} Dish${menuState.cartTotalItems>1? 'es':''}): `}
           <b>{`$${menuState.cartTotalMoney.toFixed(2)}`}</b>
         </h1>
-        <div>
-          <label htmlFor="name">Name:</label>
+        <div className='input-row'>
+          <label htmlFor='name'>Name:</label>
           <input
-            type="text"
-            id="name"
-            name="name"
+            type='text'
+            id='name'
+            name='name'
             value={name}
             onChange={handleNameChange}
-            placeholder="Enter your name"
+            placeholder='Enter your name'
             required
+            disabled={menuState.orderFullFilled}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email Address:</label>
+          <label htmlFor='email'>Email Address:</label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type='email'
+            id='email'
+            name='email'
             value={email}
             onChange={handleEmailChange}
-            placeholder="Enter your email address"
+            placeholder='Enter your email address'
             required
+            disabled={menuState.orderFullFilled} 
           />
           {!isValidEmailState && <p style={{ color: 'red' }}>Please enter a valid email address.</p>}
         </div>
         <div className="checkoutButtonDiv">
-          <Button title='Checkout' func={fullFillOrder} />
+          <Button title={menuState.orderFullFilled? 'Order Again':'Checkout'}
+           func={fullFillOrder} />
         </div>
       </div>
 

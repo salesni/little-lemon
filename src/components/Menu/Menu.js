@@ -11,12 +11,16 @@ import CartList from './CartList';
 
 
 function Menu() {
-  const [page, setPage] = useState('Menu');
+  const {menuState, setMenuState} = useMenuContext();
   const togglePage = ()=>{
-    page === 'Menu'? setPage('Cart'):setPage('Menu');
+    if (menuState.cartTotalItems > 0){
+      setMenuState({type:'togglePage'});
+    }else{
+      alert('Add Items to Cart to visualize it');
+    }
   }
 
-  const {menuState} = useMenuContext();
+
   return (
     <>
         <Header/>
@@ -25,25 +29,32 @@ function Menu() {
             <div id='menuHeaderBox'>
               <div  id='menuHeaders'>
                 <h1>
-                    {page}
+                    {
+                      (menuState.page==='Cart' && menuState.orderFullFilled)?
+                      'Order Details':menuState.page
+                    }
                 </h1>
-                <button className='cart' onClick={()=>togglePage()}>
-                  {
-                    (menuState.cartTotalItems>0 && page === 'Menu')  ? 
-                    <span className="count">{ menuState.cartTotalItems}</span>
-                    : <></>
-                  }
-                  {
-                    page === 'Menu'? 
-                    <img src={Basket} alt='basket'></img>:
-                    <FontAwesomeIcon  className='closeCart'icon={faXmark} />
-                  }
-                </button>
+                {
+
+                  menuState.orderFullFilled? <></>:
+                  <button className='cart' onClick={()=>togglePage()}>
+                    {
+                      (menuState.cartTotalItems>0 && menuState.page === 'Menu')  ? 
+                      <span className="count">{ menuState.cartTotalItems}</span>
+                      : <></>
+                    }
+                    {
+                      menuState.page === 'Menu'? 
+                      <img src={Basket} alt='basket'></img>:
+                      <FontAwesomeIcon  className='closeCart'icon={faXmark} />
+                    }
+                  </button>
+                }
               </div>
               <hr/>
             </div>
             {
-              page === 'Menu'? 
+              menuState.page === 'Menu'? 
               <MenuCardBox/> :
               <CartList/>
             }
