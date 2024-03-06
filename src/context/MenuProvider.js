@@ -1,6 +1,12 @@
 import React, {useReducer} from 'react';
 import CartItem from '../Model/CartItem';
 
+const ADD_ITEM = 'addItem';
+const DELETE_ITEM = 'deleteItem';
+const SET_ITEM = 'setItem';
+const FULFILL_ORDER = 'fullFillOrder';
+const TOGGLE_PAGE ='togglePage'
+const RESET = 'reset';
 
 const MenuContext = React.createContext('');
 
@@ -72,27 +78,27 @@ const cart = (state,action) => {
     let operation = action.type;
 
     switch(operation) {
-        case 'addItem':
+        case ADD_ITEM:
             addItemToCart(tempState,action.cartItem);
             break;
         
-        case 'deleteItem':
+        case DELETE_ITEM:
             deleteItemFromCart(tempState,action.cartItem);
             break;
         
-        case 'setItem':
+        case SET_ITEM:
             setItem2Cart(tempState,action.dishID, action.amount);
             break;
 
-        case 'fullFillOrder':
+        case FULFILL_ORDER:
             tempState.orderFullFilled = true;
             break;
         
-        case 'togglePage':
+        case TOGGLE_PAGE:
             tempState.page = tempState.page === 'Menu'? 'Cart':'Menu';
             break;
 
-        case 'reset':
+        case RESET:
             tempState = {
                 cartTotalItems:0,
                 cartTotalMoney:0.00,
