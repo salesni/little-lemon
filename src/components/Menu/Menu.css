@@ -87,7 +87,7 @@
   .cartItem {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(204, 204, 204);
     border-radius: 5px;
     padding: 10px;
     background-color: rgb(237, 239, 238) ;
