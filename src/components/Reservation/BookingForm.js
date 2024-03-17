@@ -1,52 +1,44 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import Button from '../commons/Button/Button';
+import fakeAPI from '../../commons/fakeAPI/fakeAPI';
 
-const SELECT_TIME = 'SELECT_TIME';
-const UPDATE_TIMES = 'UPDATE_TIMES';
 
-const selectTime = (state, action) => {
-  switch (action.type) {
-    case SELECT_TIME:
-      return {
-        ...state,
-        selectedTime: action.selectedTime,
-      };
-    default:
-      return state;
-  }
-};
 
-export const updateTimes = (state, action) => {
-  switch (action.type) {
-    case UPDATE_TIMES:
-      return {
-        ...state,
-        times: ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'],
-      };
-    default:
-      return state;
-  }
-};
-
-export const initializeTimes = () => ({
-  times: ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'],
-});
 
 function BookingForm() {
-  const [date, setDate] = useState('');
-  const [time, setTime] = useReducer(selectTime, { selectedTime: '17:00' });
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState('17:00');
   const [guests, setGuests] = useState('');
   const [ocasion, setOcasion] = useState('');
-  const [name,setName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [availableTimes, setAvailableTimes] = useState([]);
 
-  
-  const [availableTimes, dispatchTimes] = useReducer(updateTimes, initializeTimes());
+  const fetchTimeWithDate = async (date) => {
+    try {
+      const resultList = await fakeAPI.fetchData(date);
+      return resultList;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return [];
+    }
+  };
+
+  const dateUpdated = async(date) => {
+    const selectedDate = date instanceof Date? date:  new Date();
+    const timeList = await fetchTimeWithDate(selectedDate);
+    setAvailableTimes(timeList);
+    setTime(timeList[0]);
+    setDate(selectedDate);
+  }
+
+  useEffect(() => {
+    dateUpdated(null);
+  }, []);
 
   const handleDateChange = (event) => {
-    setDate(event.target.value);
-    dispatchTimes({ type: UPDATE_TIMES }); // Dispatch state change when date is changed
+    dateUpdated(event.target.value);
   };
 
   return (
@@ -85,18 +77,16 @@ function BookingForm() {
           <div className='dateInputs'>
             <div>
               <label htmlFor="res-date">Choose date:</label>
-              <input type="date" id="res-date" value={date} onChange={handleDateChange} />
+              <input type="date" id="res-date" value={date.toISOString().split('T')[0]}
+                min={new Date().toISOString().split('T')[0]}
+               onChange={handleDateChange} />
             </div>
             <div>
               <label htmlFor="res-time">Choose time:</label>
-              <select
-                id="res-time"
-                onChange={(event) =>
-                  setTime({ type: SELECT_TIME, times: event.target.value })
-                }
-                value={time.selectedTime}
+              <select id="res-time" onChange={(event) =>setTime(event.target.value)}
+                value={time}
               >
-                {availableTimes.times.map((timeOption) => (
+                {availableTimes.map((timeOption) => (
                   <option key={timeOption} value={timeOption}>
                     {timeOption}
                   </option>
