@@ -94,6 +94,7 @@
     border-radius: 8px;
     box-sizing: border-box;
     color: rgb(73, 94, 87);
+    text-align: center;
 }
 
 .incrementGuestsContainer input:focus,
