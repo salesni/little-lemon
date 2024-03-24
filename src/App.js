@@ -8,6 +8,7 @@ import Menu from './components/Menu/Menu';
 import Reservation from './components/Reservation/Reservation';
 import About from './components/About/About';
 import MenuProvider from './context/MenuProvider';
+import ReservationProvider from './context/ReservationProvider';
 
 
 
@@ -33,9 +34,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <MenuProvider>
-      <RouterProvider router={router} />
-      </MenuProvider>
+      <ReservationProvider>
+        <MenuProvider>
+            <RouterProvider router={router} />
+          </MenuProvider>
+      </ReservationProvider>
     </>
   );
 }

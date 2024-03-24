@@ -1,19 +1,21 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../commons/Button/Button';
 import fakeAPI from '../../commons/fakeAPI/fakeAPI';
-
+import ReservationData from '../../Model/ReservationData';
+import { useReservationContext } from '../../context/ReservationProvider';
 
 
 
 function BookingForm() {
+  const {reservationState, setReservationState} = useReservationContext();
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState('17:00');
-  const [guests, setGuests] = useState('');
-  const [occasion, setOccasion] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [guests, setGuests] = useState(reservationState.reservationData.guests);
+  const [occasion, setOccasion] = useState(reservationState.reservationData.occasion);
+  const [name, setName] = useState(reservationState.reservationData.name);
+  const [email, setEmail] = useState(reservationState.reservationData.email);
   const [isValidEmailState, setIsValidEmailState] = useState(true); 
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState(reservationState.reservationData.phone);
   const [isValidPhone, setIsValidPhone] = useState(true); 
   const [availableTimes, setAvailableTimes] = useState([]);
 
@@ -38,6 +40,7 @@ function BookingForm() {
   useEffect(() => {
     dateUpdated(null);
   }, []);
+  
 
   const handleDateChange = (event) => {
     dateUpdated(event.target.value);
@@ -81,7 +84,25 @@ function BookingForm() {
     }
   }
 
+  const reserveATable = () =>{
+    let error = '';
+    error += name.length > 10 ? '': 'Name, ';
+    error += (isValidEmailState && email!=='')? '' : 'Email, ';
+    error += (isValidPhone && phone!=='')? '': 'Phone, ';
+    error += guests>0? '': 'Guests';
 
+    if (error === ''){
+      setReservationState({
+        type:'preview',
+        reservationData: new ReservationData( name,email,phone,guests,
+                                          date,time,occasion)
+      });
+      console.log(reservationState)
+    }else{
+      alert(`Check the following inputs: ${error}.`)
+    }
+
+  }
 
   return (
     <section id='BookingForm'>
@@ -89,7 +110,7 @@ function BookingForm() {
         <h1>Book Now</h1>
       </div>
       <hr/>
-      <form>
+      <form onSubmit={(event)=>event.preventDefault()}>
         <div className='formRow'>
           <label htmlFor="res-name">Full Name:</label>
           <input type='text'id='res-name'name='name'value={name} required
@@ -105,7 +126,7 @@ function BookingForm() {
             />
         </div>
         <div className='formRow'>
-          <label for="res-phone">Phone Number:</label>
+          <label htmlFor="res-phone">Phone Number:</label>
           <input type="tel" id="res-phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
           placeholder="123-456-7890" value={phone} onChange={handlePhoneChange} required/>
         </div>
@@ -151,9 +172,11 @@ function BookingForm() {
         </div>
         <div className='buttonContainer'>
           <Button title={'Cancel'} 
-          colorClass='red'/>
+            colorClass='red' href = {'/'}
+            />
           <Button title={'Reserve a Table'} 
-          colorClass=''/>
+            func={reserveATable}
+            colorClass=''/>
 
         </div>
       </form>

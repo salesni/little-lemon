@@ -18,7 +18,7 @@ function Button(props) {
           :
           <Link  to={props.href} style={{textDecoration:'none'}}>
             <button className={`little-lemon-button ${color}`}
-             href={props.href} >
+             href={props.href} onClick={props.func} >
               {
                 props.title
               }

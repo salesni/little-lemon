@@ -7,17 +7,23 @@
     justify-content: center;
     padding: 0 20% 2rem 20%;
 }
-#BookingForm{
+#BookingForm, #ReservationPreview{
     width: 100%;
 }
 
-#BookingForm div h1 {
+#ReservationPreview h2{
+    text-align: center;
+}
+#BookingForm div h1,
+#ReservationPreview div h1 {
     font-size: 2.5rem;
     margin: 0;
     color: rgb(73, 94, 87);
   }
 
-#BookingForm form {
+
+#BookingForm form,
+#reservationData {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -113,14 +119,31 @@
     justify-content: space-between;
 }
 
+.buttonContainer > a,
 .buttonContainer > Button{
     margin-left: 20%;
 }
 
+.buttonContainer > a ~ Button,
 .buttonContainer > Button ~ Button{
     margin-right: 20%;
 }
 
+
+.reservationInputPreview{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.reservationInputPreview p{
+    flex: 1;
+}
+
+.reservationInputPreview p:first-child{
+    font-weight: bold;
+}
 
 
 @media screen and (max-width: 960px) {
@@ -132,21 +155,34 @@
     .incrementGuestsContainer input{
         width: 30%;
     }
+    .buttonContainer > a,
     .buttonContainer > Button{
         margin-left: 10%;
     }
     
+    .buttonContainer > a ~ Button,
     .buttonContainer > Button ~ Button{
         margin-right: 10%;
+    }
+
+    .reservationInputPreview{
+        margin-left: 7%;
+        margin-right: 7%;
     }
 }
 
 @media screen and (max-width: 700px) {
+    .buttonContainer > a,
     .buttonContainer > Button{
         margin-left: 5%;
     }
     
+    .buttonContainer > a ~ Button,
     .buttonContainer > Button ~ Button{
         margin-right: 5%;
+    }
+    .reservationInputPreview{
+        margin-left: 4%;
+        margin-right: 4%;
     }
 }

@@ -20,7 +20,7 @@ const fetchData = async (date) => {
   const submitAPI = async (formData) =>{
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-          resolve(true);
+          resolve(formData);
       }, 1000);
     });
   }
