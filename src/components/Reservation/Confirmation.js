@@ -3,6 +3,55 @@ import { useReservationContext } from '../../context/ReservationProvider';
 import Button from '../commons/Button/Button';
 import fakeAPI from '../../commons/fakeAPI/fakeAPI';
 
+export const title = (reservationState, dataSubmitted)=>{
+    let title = '';
+    if (reservationState.preview){
+        title = 'Confirm Reservation';
+    }
+    if(reservationState.confirmed && reservationState.preview){
+        title = 'Reservation';
+    }
+    if(reservationState.confirmed && reservationState.preview && reservationState.update){
+        title = 'Confirm Update';
+    }
+    if(dataSubmitted){
+        title = 'Congratulations! ✔️'
+    }
+    if(reservationState.cancelation){
+        title = 'Confirm Cancelation';
+
+    }
+    return title;
+}
+
+export const subTitle =  (reservationState, dataSubmitted)=>{
+    let subTitle = '';
+    if (reservationState.preview){
+        subTitle = 'Please Review that your information is correct.';
+    }
+    if(reservationState.confirmed && reservationState.preview){
+        subTitle = 'Here is your Reservation Information';
+    }
+    if(dataSubmitted){
+        subTitle = 'Your Reservation has been made successfully!'
+    }
+    if(reservationState.cancelation){
+        subTitle = 'Please Review if you want to cancel your reservation.';
+    }
+    return subTitle;
+}
+
+export const footerTitle =  (reservationState, dataSubmitted)=>{
+    let footerTitle = 'Is your information correct?';
+    if((reservationState.confirmed && reservationState.preview) ||dataSubmitted ){
+        footerTitle = 'It is a Pleasure to have you at Little Lemon!'
+    }
+    if(reservationState.cancelation){
+        footerTitle = 'Do you want to cancel your reservation ?';
+    }
+
+    return footerTitle;
+}
 
 function Confirmation() {
     const {reservationState, setReservationState} = useReservationContext();
@@ -17,8 +66,6 @@ function Confirmation() {
                     <p>{value}</p>
                 </div>); 
       });
-      console.log(reservationState)
-      console.log(dataSubmitted)
     const submitData = async () =>{
         try {
             const reservationData = await fakeAPI.submitAPI(reservationState.reservationData);
@@ -27,56 +74,6 @@ function Confirmation() {
         } catch (error) {
             console.error('Error Submitting the Data :', error);
         }
-    }
-    
-    const title = ()=>{
-        let title = '';
-        if (reservationState.preview){
-            title = 'Confirm Reservation';
-        }
-        if(reservationState.confirmed && reservationState.preview){
-            title = 'Reservation';
-        }
-        if(reservationState.confirmed && reservationState.preview && reservationState.update){
-            title = 'Confirm Update';
-        }
-        if(dataSubmitted){
-            title = 'Congratulations! ✔️'
-        }
-        if(reservationState.cancelation){
-            title = 'Confirm Cancelation';
-
-        }
-        return title;
-    }
-
-    const subTitle = ()=>{
-        let subTitle = '';
-        if (reservationState.preview){
-            subTitle = 'Please Review that your information is correct.';
-        }
-        if(reservationState.confirmed && reservationState.preview){
-            subTitle = 'Here is your Reservation Information';
-        }
-        if(dataSubmitted){
-            subTitle = 'Your Reservation has been made successfully!'
-        }
-        if(reservationState.cancelation){
-            subTitle = 'Please Review if you want to cancel your reservation.';
-        }
-        return subTitle;
-    }
-
-    const footerTitle = ()=>{
-        let footerTitle = 'Is your information correct?';
-        if((reservationState.confirmed && reservationState.preview) ||dataSubmitted ){
-            footerTitle = 'It is a Pleasure to have you at Little Lemon!'
-        }
-        if(reservationState.cancelation){
-            footerTitle = 'Do you want to cancel your reservation ?';
-        }
-
-        return footerTitle;
     }
 
     const leftButton = ()=>{
@@ -116,8 +113,8 @@ function Confirmation() {
     return (
         <section id='ReservationPreview'>
             <div>
-                <h1>{title()}</h1>
-                <h2> {subTitle()}</h2>
+                <h1>{title(reservationState, dataSubmitted)}</h1>
+                <h2> {subTitle(reservationState, dataSubmitted)}</h2>
             </div>
             <hr/>
             <div id='reservationData'>
@@ -125,7 +122,7 @@ function Confirmation() {
             </div>
 
             <hr/>
-            <h2>{footerTitle()}</h2>
+            <h2>{footerTitle(reservationState, dataSubmitted)}</h2>
             <div className='buttonContainer'>
                 {leftButton()}
                 {rightButton()}

@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import ReservationData from '../Model/ReservationData';
 
-const ReservationContext = React.createContext('');
+export const ReservationContext = React.createContext('');
 
 const PREVIEW = 'preview';
 const REMOVE_PREVIEW = 'removePreview';
@@ -89,5 +89,6 @@ function ReservationProvider({children}) {
 }
 
 export const useReservationContext = () => React.useContext(ReservationContext);
+
 
 export default ReservationProvider;

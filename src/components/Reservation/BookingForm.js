@@ -86,20 +86,19 @@ function BookingForm() {
 
   const reserveATable = () =>{
     let error = '';
-    error += name.length > 10 ? '': 'Name, ';
+    error += name.length > 5 ? '': 'Name, ';
     error += (isValidEmailState && email!=='')? '' : 'Email, ';
     error += (isValidPhone && phone!=='')? '': 'Phone, ';
     error += guests>0? '': 'Guests';
-
+    console.log('Name: ',name,' Email: ',email, ' Phone: ',phone, 'Guests: ',guests)
     if (error === ''){
+      const newData = new ReservationData(name, email, phone, guests, date, time, occasion);
       setReservationState({
-        type:'preview',
-        reservationData: new ReservationData( name,email,phone,guests,
-                                          date,time,occasion)
+        type: 'preview',
+        reservationData: newData
       });
-      console.log(reservationState)
     }else{
-      alert(`Check the following inputs: ${error}.`)
+      console.log(`Check the following inputs: ${error}.`)
     }
 
   }
