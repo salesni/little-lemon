@@ -12,11 +12,39 @@
 }
 
 .little-lemon-button:hover{
-    background-color: rgb(274, 226, 30) ;
+    background-color: rgb(255, 226, 30) ;
 }
 
 .little-lemon-button:active{
     color: wheat;
     background-color: black;
     border: none;
+}
+
+.red{
+    background-color: rgb(238, 153, 114) ;
+    color: rgb(0, 0, 0);
+}
+
+.red:hover{
+    background-color: rgb(236, 170, 139) ;
+    color: rgb(0, 0, 0);
+}
+
+.red:active{
+    background-color: rgb(233, 104, 45);
+    color: rgb(0, 0, 0);
+}
+
+.green{
+    background-color: rgb(73, 94, 87);
+    color: rgb(237, 239, 238);
+}
+
+.green:hover{
+    background-color: rgb(61, 160, 127);
+}
+
+.green:active{
+    background-color: rgb(41, 122, 95);
 }

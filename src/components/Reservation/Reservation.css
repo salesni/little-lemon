@@ -1,0 +1,188 @@
+#reservation{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 0 20% 2rem 20%;
+}
+#BookingForm, #ReservationPreview{
+    width: 100%;
+}
+
+#ReservationPreview h2{
+    text-align: center;
+}
+#BookingForm div h1,
+#ReservationPreview div h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: rgb(73, 94, 87);
+  }
+
+
+#BookingForm form,
+#reservationData {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .formRow {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    margin-bottom: 1rem; 
+    flex-grow: 1;
+}
+
+.formRow input[type="text"],
+.formRow input[type="email"],
+.formRow input[type="tel"],
+.formRow input[type="date"],
+.formRow select{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgb(217, 217, 217);;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    color: rgb(73, 94, 87);
+
+}
+
+
+.dateInputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    
+}
+
+.dateInputs div{
+    display: flex;
+    flex-direction: column;
+    width: 25%; 
+    padding: 0 3rem;
+}
+
+.incrementGuestsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+  
+
+.incrementGuestsContainer button{
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    background-color: rgb(73, 94, 87);
+    color: rgb(237, 239, 238);
+    cursor: pointer;
+}
+
+.incrementGuestsContainer button:active{
+    background-color: rgb(41, 122, 95);
+}
+
+.incrementGuestsContainer input{
+    width: 10%;
+    margin: 0 1rem;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgb(217, 217, 217);;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: rgb(73, 94, 87);
+    text-align: center;
+}
+
+.incrementGuestsContainer input:focus,
+.formRow input[type="text"]:focus,
+.formRow input[type="email"]:focus,
+.formRow input[type="tel"]:focus,
+.formRow input[type="date"]:focus,
+.formRow select:focus{
+    border: .15rem solid rgb(128, 189, 255);
+    outline: 0;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttonContainer > a,
+.buttonContainer > Button{
+    margin-left: 20%;
+}
+
+.buttonContainer > a ~ Button,
+.buttonContainer > Button ~ Button{
+    margin-right: 20%;
+}
+
+
+.reservationInputPreview{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.reservationInputPreview p{
+    flex: 1;
+}
+
+.reservationInputPreview p:first-child{
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 960px) {
+
+    .dateInputs div{
+        width: 100%; 
+        padding: 0 1rem;
+    }
+    .incrementGuestsContainer input{
+        width: 30%;
+    }
+    .buttonContainer > a,
+    .buttonContainer > Button{
+        margin-left: 10%;
+    }
+    
+    .buttonContainer > a ~ Button,
+    .buttonContainer > Button ~ Button{
+        margin-right: 10%;
+    }
+
+    .reservationInputPreview{
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .buttonContainer > a,
+    .buttonContainer > Button{
+        margin-left: 5%;
+    }
+    
+    .buttonContainer > a ~ Button,
+    .buttonContainer > Button ~ Button{
+        margin-right: 5%;
+    }
+    .reservationInputPreview{
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
