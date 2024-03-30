@@ -1,0 +1,32 @@
+.pop-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .pop-toast.show {
+    opacity: 1;
+  }
+  
+  .pop-toast.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .toast-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .close-icon {
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: bold;
+  }

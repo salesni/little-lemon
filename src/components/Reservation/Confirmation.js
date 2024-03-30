@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { useReservationContext } from '../../context/ReservationProvider';
 import Button from '../commons/Button/Button';
+import LoadingScreen from '../commons/LoadingScreen/LoadingScreen';
 import fakeAPI from '../../commons/fakeAPI/fakeAPI';
 
 export const title = (reservationState, dataSubmitted)=>{
@@ -55,6 +56,7 @@ export const footerTitle =  (reservationState, dataSubmitted)=>{
 
 function Confirmation() {
     const {reservationState, setReservationState} = useReservationContext();
+    const [loading, setLoading] = useState(false);
     const [dataSubmitted, setDataSubmitted] = useState(false);
     const reservationData = Object.keys(reservationState.reservationData).map((input)=>{
         let value = reservationState.reservationData[input] ;
@@ -66,15 +68,19 @@ function Confirmation() {
                     <p>{value}</p>
                 </div>); 
       });
-    const submitData = async () =>{
+
+    const submitData = async () => {
+        setLoading(true); // Set loading to true when submitting data
         try {
-            const reservationData = await fakeAPI.submitAPI(reservationState.reservationData);
-            setReservationState({type:'submit',reservationData: reservationData});
-            setDataSubmitted(true);
+          const reservationData = await fakeAPI.submitAPI(reservationState.reservationData);
+          setReservationState({ type: 'submit', reservationData: reservationData });
+          setDataSubmitted(true);
         } catch (error) {
-            console.error('Error Submitting the Data :', error);
+          console.error('Error Submitting the Data :', error);
+        } finally {
+          setLoading(false); // Set loading to false after submission
         }
-    }
+      }
 
     const leftButton = ()=>{
         let button;
@@ -112,6 +118,7 @@ function Confirmation() {
 
     return (
         <section id='ReservationPreview'>
+            {loading && <LoadingScreen />} 
             <div>
                 <h1>{title(reservationState, dataSubmitted)}</h1>
                 <h2> {subTitle(reservationState, dataSubmitted)}</h2>

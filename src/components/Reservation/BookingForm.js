@@ -3,6 +3,7 @@ import Button from '../commons/Button/Button';
 import fakeAPI from '../../commons/fakeAPI/fakeAPI';
 import ReservationData from '../../Model/ReservationData';
 import { useReservationContext } from '../../context/ReservationProvider';
+import PopToast from '../commons/PopToast/PopToast';
 
 
 
@@ -18,6 +19,8 @@ function BookingForm() {
   const [phone, setPhone] = useState(reservationState.reservationData.phone);
   const [isValidPhone, setIsValidPhone] = useState(true); 
   const [availableTimes, setAvailableTimes] = useState([]);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
   const fetchTimeWithDate = async (date) => {
     try {
@@ -98,13 +101,15 @@ function BookingForm() {
         reservationData: newData
       });
     }else{
-      console.log(`Check the following inputs: ${error}.`)
+      setShowToast(true);
+      setToastMessage(`  Check variables: ${error}`);
     }
 
   }
 
   return (
     <section id='BookingForm'>
+      {showToast && <PopToast message={toastMessage} onClose={() => setShowToast(false)} />}
       <div>
         <h1>Book Now</h1>
       </div>
@@ -123,11 +128,13 @@ function BookingForm() {
               placeholder='Enter your email address'
               onChange={handleEmailChange}
             />
+            {!isValidEmailState && <p style={{ color: 'red' }}>Please enter a valid email address.</p>}
         </div>
         <div className='formRow'>
           <label htmlFor="res-phone">Phone Number:</label>
           <input type="tel" id="res-phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
           placeholder="123-456-7890" value={phone} onChange={handlePhoneChange} required/>
+          {!isValidPhone && <p style={{ color: 'red' }}>Please enter a valid Phone Number.</p>}
         </div>
         <div className='formRow'>
           <label htmlFor="guests">Number of guests:</label>
@@ -138,6 +145,7 @@ function BookingForm() {
                  type="number" id='guests'/>
                 <button onClick={()=>increaseDecreaseGuests(1)}>+</button>
             </div>
+            {guests<=0 && <p style={{ color: 'red' }}>Guests bust be at least one.</p>}
         </div>
         <div className='formRow'>
           <div className='dateInputs'>
